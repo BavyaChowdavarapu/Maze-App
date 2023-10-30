@@ -2,6 +2,7 @@ class Tester{
 
 
 public static void main(String[] args) {
+    //SQUARE CLASS UNIT TESTS
     Square t1 = new Square(1,1,9);
     Square t2 = new Square(1,1,0);
     Square t3 = new Square(1,1,1);
@@ -16,7 +17,7 @@ public static void main(String[] args) {
     System.out.println(t5.getType());
     */
 
-
+    //MAZE SKELETON UNIT TESTS
     Maze newMaze = new Maze ();
     newMaze.loadMaze("src/maze-2");
 
@@ -25,6 +26,10 @@ public static void main(String[] args) {
 
     System.out.println("Neighbors: "+newMaze.getNeighbors(newMaze.getStart()));
     System.out.println(newMaze);
+
+    
+
+
 
 }
 
