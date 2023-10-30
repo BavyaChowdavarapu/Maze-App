@@ -20,14 +20,11 @@ public static void main(String[] args) {
     Maze newMaze = new Maze ();
     newMaze.loadMaze("src/maze-2");
 
-    /*try{
-    newMaze.loadMaze("maze-2");
-    }
-    catch(Exception e){
-        System.out.println("File not found.");
-    }
-*/
+    System.out.println("Start = " +newMaze.getStart());
+    System.out.println("End = " +newMaze.getFinish());
 
+    System.out.println("Neighbors: "+newMaze.getNeighbors(newMaze.getStart()));
+    System.out.println(newMaze);
 
 }
 
