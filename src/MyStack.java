@@ -2,7 +2,7 @@ import java.util.NoSuchElementException;
 import java.util.*;
 
 public class MyStack {
-    Stack<Square> nextStep = new Stack<>();
+    ArrayList<Square> nextStep = new ArrayList<>();
 
    
     /**
@@ -10,7 +10,7 @@ public class MyStack {
     * @param item the data item to add (of type T)
     */
     void push(Square item){
-        nextStep.push(item);
+        nextStep.add(item);
     }
     
     /**
@@ -19,7 +19,7 @@ public class MyStack {
     * @throws NoSuchElementException if the stack is empty
      */
     Square pop() throws NoSuchElementException{
-        Square thisStep = nextStep.pop();
+        Square thisStep = nextStep.remove(nextStep.size() -1);
         return thisStep;
     }
     
@@ -29,7 +29,7 @@ public class MyStack {
      * @throws NoSuchElementException if the stack is empty
      */
     Square top() throws NoSuchElementException{
-        Square thisStep = nextStep.peek();
+        Square thisStep = nextStep.get(nextStep.size() - 1);
         return thisStep;
     }
 
@@ -60,7 +60,7 @@ public class MyStack {
      */
     void clear(){
         while (nextStep.size() != 0){
-            nextStep.pop();
+            nextStep.remove(nextStep.size() - 1);
         }
     }
 
