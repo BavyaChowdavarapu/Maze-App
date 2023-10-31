@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
  */
 
 
-public interface StackADT<T> {
+public interface StackADT<T>{
     /**
      * Add an item onto the stack
      * @param item the data item to add (of type T)
