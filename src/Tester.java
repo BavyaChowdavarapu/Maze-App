@@ -27,8 +27,28 @@ public static void main(String[] args) {
     System.out.println("Neighbors: "+newMaze.getNeighbors(newMaze.getStart()));
     System.out.println(newMaze);
 
-    
 
+    //MYSTACK UNIT TESTS
+    MyStack myStack = new MyStack();
+    //myStack.pop(); //should throw exception (works)
+    myStack.push(t1);
+
+    System.out.println(myStack.top().getRow()); 
+    System.out.println(myStack.pop().getRow());
+
+    myStack.push(t1);
+    myStack.push(t2);
+    myStack.push(t3);
+    myStack.push(t4);
+    myStack.push(t5);
+
+    System.out.println(myStack.size());
+    
+    System.out.println(myStack.isEmpty());
+
+    myStack.clear();
+
+    System.out.println(myStack.isEmpty());
 
 
 }
