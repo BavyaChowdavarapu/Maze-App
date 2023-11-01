@@ -50,7 +50,19 @@ public static void main(String[] args) {
 
     System.out.println(myStack.isEmpty());
 
+    //MyQueue Unit Tests
+    System.out.println("MY QUEUE TESTS:");
 
+    MyQueue thing = new MyQueue();
+    thing.enqueue(t1);
+    thing.enqueue(t2);
+    thing.enqueue(t3);
+    thing.enqueue(t4);
+    System.out.println(thing.dequeue().getType());
+    System.out.println(thing.size());
+    System.out.println(thing.front().getType());
+    thing.clear();
+    System.out.println(thing.isEmpty());
 }
 
 
