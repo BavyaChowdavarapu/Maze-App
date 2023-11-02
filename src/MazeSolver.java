@@ -1,3 +1,6 @@
+import java.util.*;
+
+
 public abstract class MazeSolver {
     private Maze myMaze;
 
@@ -36,8 +39,27 @@ public abstract class MazeSolver {
 
     ///////////////finsih 
     Square step(){
-        Square mySquare = new Square(1,1, 1);;
-        return mySquare;
+        if (!isEmpty()){
+            Square explore = next();
+            if (explore.getType() == 3){
+                System.out.println(getPath());
+                return new Square(0,0,9);
+            }
+            else{
+                ArrayList<Square> neighbors = myMaze.getNeighbors(explore);
+                for (Square n : neighbors){
+                    if (n.previous == null && n.getType() != 1){
+                        add(n);
+                        n.previous = explore;
+                       
+                    }
+                }
+
+                return explore;
+            }
+        
+        }  
+        return new Square(0,0,9);  
     }
 
     void solve(){};
