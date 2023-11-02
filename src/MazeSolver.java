@@ -43,7 +43,7 @@ public abstract class MazeSolver {
             Square explore = next();
             if (explore.getType() == 3){
                 System.out.println(getPath());
-                return new Square(0,0,9);
+                return explore;
             }
             else{
                 ArrayList<Square> neighbors = myMaze.getNeighbors(explore);
@@ -62,6 +62,14 @@ public abstract class MazeSolver {
         return new Square(0,0,9);  
     }
 
-    void solve(){};
+
+    private String path = "";
+    void solve(){
+        Square temp = new Square (0,0,2);
+        while (!isEmpty() || temp.getType() == 3){
+            temp = step()
+            path = path+"["+temp.getRow()+","+temp.getCol()+"]";
+        }
+    };
     
 }
