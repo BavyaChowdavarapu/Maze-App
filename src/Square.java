@@ -2,16 +2,11 @@ public class Square {
 
     private int row, col, type;
     private boolean valid = true;
-    public Square previous;
-    //public boolean marked;
 
     public Square(int row, int col, int type){
         this.row = row;
         this.col = col;
         this.type = type;
-        this.previous  = null;
-        //marked=false;
-
 
         if (type != 0 && type != 1 && type != 2 && type!=3){
             valid = false;
