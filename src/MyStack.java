@@ -1,7 +1,7 @@
 import java.util.NoSuchElementException;
 import java.util.*;
 
-public class MyStack {
+public class MyStack implements StackADT {
     ArrayList<Square> nextStep = new ArrayList<>();
 
    
@@ -9,8 +9,9 @@ public class MyStack {
     * Add an item onto the stack
     * @param item the data item to add (of type T)
     */
-    void push(Square item){
-        nextStep.add(item);
+    public void push(Object item){
+        Square itemm = (Square) item;
+        nextStep.add(itemm);
     }
     
     /**
@@ -18,7 +19,7 @@ public class MyStack {
      * @return the top item in the stack
     * @throws NoSuchElementException if the stack is empty
      */
-    Square pop() throws NoSuchElementException{
+    public Square pop() throws NoSuchElementException{
         Square thisStep = nextStep.remove(nextStep.size() -1);
         return thisStep;
     }
@@ -28,7 +29,7 @@ public class MyStack {
      * @return the top item in the stack
      * @throws NoSuchElementException if the stack is empty
      */
-    Square top() throws NoSuchElementException{
+    public Square top() throws NoSuchElementException{
         Square thisStep = nextStep.get(nextStep.size() - 1);
         return thisStep;
     }
@@ -37,7 +38,7 @@ public class MyStack {
      * Find how many items are in the stack
      * @return the number of items in the stack
      */
-    int size(){
+    public int size(){
         int num = nextStep.size();
         return num;
 
@@ -47,7 +48,7 @@ public class MyStack {
      * Determine if the stack is empty
      * @return true if the size is 0, false otherwise
      */
-    boolean isEmpty(){
+    public boolean isEmpty(){
         if (nextStep.size() == 0){
             return true;
         }
@@ -58,7 +59,7 @@ public class MyStack {
     /**
      * Clear out the data structure
      */
-    void clear(){
+    public void clear(){
         while (nextStep.size() != 0){
             nextStep.remove(nextStep.size() - 1);
         }

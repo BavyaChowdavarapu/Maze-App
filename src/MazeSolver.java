@@ -4,6 +4,8 @@ import java.util.*;
 public abstract class MazeSolver {
     private Maze myMaze;
 
+    private String path = "";
+
     abstract void makeEmpty();
 
     abstract boolean isEmpty();
@@ -12,7 +14,11 @@ public abstract class MazeSolver {
 
     abstract Square next();
 
-    MazeSolver(Maze maze){};
+    MazeSolver(Maze maze){
+        myMaze = maze;
+    };
+
+    
 
     boolean isSolved(){
         if (isEmpty() || next().getType() == 3){
@@ -26,15 +32,7 @@ public abstract class MazeSolver {
 
     ///////////////finish 
     String getPath(){
-        String coords = " "; 
-
-        if (isSolved()){
-            
-            return coords;
-        }
-        else{
-            return "No Solution Exists";
-        }
+        return path;
     }
 
     ///////////////finsih 
@@ -63,7 +61,7 @@ public abstract class MazeSolver {
     }
 
 
-    private String path = "";
+    
     void solve(){
         Square temp = new Square (0,0,2);
         while (!isEmpty() || temp.getType() == 3){
