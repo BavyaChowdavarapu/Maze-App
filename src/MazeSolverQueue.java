@@ -1,9 +1,9 @@
 public class MazeSolverQueue extends MazeSolver{
-    public static Maze myMaze; //instance vairable for the class
+    //public static Maze myMaze; //instance vairable for the class
 
     private MyQueue worklist = new MyQueue();
 
-    public MazeSolverQueue(){
+    public MazeSolverQueue(Maze myMaze){
         super(myMaze);
     }
     

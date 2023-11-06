@@ -1,9 +1,9 @@
 public class MazeSolverStack extends MazeSolver {
 
-    public static Maze maze;
+    //public static Maze maze;
     private MyStack workList;
 
-    public MazeSolverStack(){
+    public MazeSolverStack(Maze maze){
         super(maze);
     }
 
