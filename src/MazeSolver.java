@@ -18,8 +18,6 @@ public abstract class MazeSolver {
         myMaze = maze;
     };
 
-    
-
     boolean isSolved(){
         if (isEmpty() || next().getType() == 3){
             return true;
@@ -46,9 +44,10 @@ public abstract class MazeSolver {
             else{
                 ArrayList<Square> neighbors = myMaze.getNeighbors(explore);
                 for (Square n : neighbors){
-                    if (n.previous == null && n.getType() != 1){
+                    if (n.marked == true && n.getType() != 1){
                         add(n);
                         n.previous = explore;
+                        n.marked = true;
                        
                     }
                 }

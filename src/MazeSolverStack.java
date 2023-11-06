@@ -6,6 +6,10 @@ public class MazeSolverStack extends MazeSolver {
     public MazeSolverStack(Maze maze){
         super(maze);
     }
+    
+    public MyStack getWorkList(){
+        return workList;
+    }
 
     public void makeEmpty(){
         workList = new MyStack();

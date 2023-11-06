@@ -10,7 +10,7 @@ public class Square {
         this.col = col;
         this.type = type;
         this.previous  = null;
-        marked =false;
+        marked=false;
 
 
         if (type != 0 && type != 1 && type != 2 && type!=3){
@@ -33,6 +33,9 @@ public class Square {
     }
 
     public String toString(){
+        if (type == 0 && marked){
+            return ". ";
+        }
         if (type == 0){
             return "_ ";
         }

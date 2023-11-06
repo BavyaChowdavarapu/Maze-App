@@ -3,9 +3,11 @@ public class MazeSolverQueue extends MazeSolver{
 
     private MyQueue worklist = new MyQueue();
 
+
     public MazeSolverQueue(Maze myMaze){
         super(myMaze);
     }
+    
     
     
     public void makeEmpty(){
@@ -36,8 +38,5 @@ public class MazeSolverQueue extends MazeSolver{
     public MyQueue getWorkList(){
         return worklist;
     }
-
-    
-
 }
 

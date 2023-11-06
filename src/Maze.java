@@ -103,6 +103,11 @@ public class Maze {
 
     //TO DO LATER
     public void reset(){
+        for (Square[] row : maze){
+            for (Square sq : row){
+                sq.marked = false;
+            }
+        }
         
     }
 
