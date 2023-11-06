@@ -15,15 +15,23 @@ public class MazeSolverQueue extends MazeSolver{
     }
 
 
-
-    //finish---------------------------------------------
-    public boolean isEmpty(){ return true;}
-
-    public void add(Square sq){
-
+    public boolean isEmpty(){ 
+        if (worklist.size() != 0){
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
-    public Square next(){return new Square(0,0,1);}
+    public void add(Square sq){
+        worklist.enqueue(sq);
+    }
+
+    public Square next(){
+        worklist.dequeue();
+        return worklist.front();
+    }
 
 }
 
