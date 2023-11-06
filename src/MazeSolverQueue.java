@@ -38,5 +38,8 @@ public class MazeSolverQueue extends MazeSolver{
     public MyQueue getWorkList(){
         return worklist;
     }
-}
+    } //
+
+    
+
 
