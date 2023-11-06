@@ -34,16 +34,16 @@ public class Square {
 
     public String toString(){
         if (type == 0){
-            return "_ - empty space (0)";
+            return "_ ";
         }
         else if (type == 1){
-            return "# - wall (1)";
+            return "# ";
         }
         else if (type == 2){
-            return "S - start (2)";
+            return "S ";
         }
         else if (type == 3){
-            return "E - exit (3)";
+            return "E ";
         }
         return "invalid parameter";
     }
