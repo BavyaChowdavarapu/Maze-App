@@ -2,10 +2,12 @@ public class MazeSolverQueue extends MazeSolver{
     //public static Maze myMaze; //instance vairable for the class
 
     private MyQueue worklist = new MyQueue();
+    private Maze myMaze;
 
 
     public MazeSolverQueue(Maze myMaze){
         super(myMaze);
+        this.myMaze = myMaze;
     }
     
     
@@ -14,6 +16,7 @@ public class MazeSolverQueue extends MazeSolver{
         while (worklist.size() != 0){
             worklist.dequeue();
         }
+        worklist.enqueue(myMaze.getStart());
     }
 
 
@@ -31,8 +34,12 @@ public class MazeSolverQueue extends MazeSolver{
     }
 
     public Square next(){
-        worklist.dequeue();
-        return worklist.front();
+        Square mySquare = worklist.dequeue();
+        if (mySquare.previous != null){ 
+            mySquare.previous.setType(0);
+        }
+        mySquare.setType(4);
+        return mySquare;
     }
 
     public MyQueue getWorkList(){

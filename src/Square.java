@@ -4,13 +4,14 @@ public class Square {
     private boolean valid = true;
     public Square previous;
     public boolean marked;
+    public boolean drone = false;
 
     public Square(int row, int col, int type){
         this.row = row;
         this.col = col;
         this.type = type;
         this.previous  = null;
-        marked=false;
+        marked =false;
 
 
         if (type != 0 && type != 1 && type != 2 && type!=3){
@@ -32,10 +33,13 @@ public class Square {
             return -1;
     }
 
+    //----------------------------
+    public void setType(int n){
+        type = n;
+    }
+
+
     public String toString(){
-        if (type == 0 && marked){
-            return ". ";
-        }
         if (type == 0){
             return "_ ";
         }
@@ -47,6 +51,10 @@ public class Square {
         }
         else if (type == 3){
             return "E ";
+        }
+        else if (type == 4){
+            drone = true;
+            return "o ";
         }
         return "invalid parameter";
     }

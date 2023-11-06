@@ -44,10 +44,11 @@ public abstract class MazeSolver {
             else{
                 ArrayList<Square> neighbors = myMaze.getNeighbors(explore);
                 for (Square n : neighbors){
-                    if (n.marked == true && n.getType() != 1){
+                    if (n.marked == false && n.getType() != 1){
                         add(n);
                         n.previous = explore;
                         n.marked = true;
+                        
                        
                     }
                 }
