@@ -16,7 +16,11 @@ public class MazeSolverStack extends MazeSolver {
     }
 
     public boolean isEmpty(){
-        return workList.isEmpty();
+        if (workList != null){
+            return workList.isEmpty();
+        }
+        return true;
+        
 
     }
 
@@ -27,11 +31,12 @@ public class MazeSolverStack extends MazeSolver {
     public Square next(){
         Square mySquare = workList.pop();
 
+        /*
         if (mySquare.previous != null){ 
             mySquare.previous.setType(0);
         }
         mySquare.setType(4);
-        
+        */
         return mySquare;
     }
 }

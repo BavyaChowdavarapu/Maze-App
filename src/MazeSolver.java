@@ -50,7 +50,9 @@ public abstract class MazeSolver {
                        
                     }
                 }
-
+                if (explore.previous != null)
+                    explore.previous.setType(0);
+                explore.setType(4);
                 return explore;
             }
         

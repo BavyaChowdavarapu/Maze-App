@@ -35,7 +35,7 @@ public class Square {
 
     //----------------------------
     public void setType(int n){
-        type = n;
+        this.type = n;
     }
 
 
@@ -43,8 +43,6 @@ public class Square {
         if (marked){//explored squares 
             return ". ";
         }
-
-
         if (type == 0){
             return "_ ";
         }

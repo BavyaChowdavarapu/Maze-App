@@ -37,10 +37,12 @@ public class MazeSolverQueue extends MazeSolver{
         Square mySquare = worklist.dequeue(); //gets the next step 
         
 
+        /*
         if (mySquare.previous != null){ 
             mySquare.previous.setType(0);
         }
         mySquare.setType(4);
+        */
         return mySquare;
     }
 

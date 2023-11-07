@@ -39,6 +39,7 @@ public class MyStack implements StackADT {
      * @return the number of items in the stack
      */
     public int size(){
+        
         int num = nextStep.size();
         return num;
 
@@ -53,7 +54,7 @@ public class MyStack implements StackADT {
             return true;
         }
         else 
-        return false;
+            return false;
     }
 
     /**
