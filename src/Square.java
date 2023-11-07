@@ -4,7 +4,7 @@ public class Square {
     private boolean valid = true;
     public Square previous;
     public boolean marked;
-    public boolean drone = false;
+    //public boolean drone = false;
 
     public Square(int row, int col, int type){
         this.row = row;
@@ -40,6 +40,11 @@ public class Square {
 
 
     public String toString(){
+        if (marked){//explored squares 
+            return ". ";
+        }
+
+
         if (type == 0){
             return "_ ";
         }
@@ -53,9 +58,11 @@ public class Square {
             return "E ";
         }
         else if (type == 4){
-            drone = true;
+            //drone = true;
             return "o ";
         }
+        
+        
         return "invalid parameter";
     }
 

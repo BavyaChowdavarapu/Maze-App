@@ -16,7 +16,7 @@ public abstract class MazeSolver {
 
     MazeSolver(Maze maze){
         myMaze = maze;
-    };
+    }
 
     boolean isSolved(){
         if (isEmpty() || next().getType() == 3){
@@ -28,12 +28,10 @@ public abstract class MazeSolver {
             
     }
 
-    ///////////////finish 
     String getPath(){
         return path;
     }
 
-    ///////////////finsih 
     Square step(){
         if (!isEmpty()){
             Square explore = next();
@@ -68,6 +66,6 @@ public abstract class MazeSolver {
             temp = step();
             path = path+"["+temp.getRow()+","+temp.getCol()+"]";
         }
-    };
+    }
     
 }

@@ -35,6 +35,8 @@ public class MazeSolverQueue extends MazeSolver{
 
     public Square next(){
         Square mySquare = worklist.dequeue();
+        //mySquare.drone = true;
+
         if (mySquare.previous != null){ 
             mySquare.previous.setType(0);
         }

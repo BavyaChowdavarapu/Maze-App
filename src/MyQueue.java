@@ -20,7 +20,9 @@ public class MyQueue implements QueueADT{
      * @throws NoSuchElementException if the queue is empty
      */
     public Square dequeue() throws NoSuchElementException{
-        return nextStep.removeFirst();
+        Square newDrone = nextStep.removeFirst();
+        //newDrone.drone = true;
+        return newDrone;
     }
 
     /**
