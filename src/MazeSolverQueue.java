@@ -16,7 +16,7 @@ public class MazeSolverQueue extends MazeSolver{
         while (worklist.size() != 0){
             worklist.dequeue();
         }
-        worklist.enqueue(myMaze.getStart());
+        worklist.enqueue(myMaze.getStart()); //worklist starts with the starting point 
     }
 
 
@@ -34,8 +34,8 @@ public class MazeSolverQueue extends MazeSolver{
     }
 
     public Square next(){
-        Square mySquare = worklist.dequeue();
-        //mySquare.drone = true;
+        Square mySquare = worklist.dequeue(); //gets the next step 
+        
 
         if (mySquare.previous != null){ 
             mySquare.previous.setType(0);
@@ -47,7 +47,7 @@ public class MazeSolverQueue extends MazeSolver{
     public MyQueue getWorkList(){
         return worklist;
     }
-    } //
+} 
 
     
 

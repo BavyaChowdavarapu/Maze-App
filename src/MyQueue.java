@@ -47,7 +47,14 @@ public class MyQueue implements QueueADT{
      * @return true if the size is 0, false otherwise
      */
     public boolean isEmpty(){
-        return nextStep.isEmpty();
+        if (nextStep.size() == 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+        
+        
     }
 
     /**
