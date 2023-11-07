@@ -19,6 +19,7 @@ public class MazeSolverStack extends MazeSolver {
         if (workList != null){
             return workList.isEmpty();
         }
+        makeEmpty();
         return true;
         
 

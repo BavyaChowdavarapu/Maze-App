@@ -50,6 +50,7 @@ public class MyStack implements StackADT {
      * @return true if the size is 0, false otherwise
      */
     public boolean isEmpty(){
+        
         if (nextStep.size() == 0){
             return true;
         }
