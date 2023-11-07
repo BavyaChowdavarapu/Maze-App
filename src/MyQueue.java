@@ -22,6 +22,7 @@ public class MyQueue implements QueueADT{
     public Square dequeue() throws NoSuchElementException{
         Square newDrone = nextStep.removeFirst();
         //newDrone.drone = true;
+        newDrone.setType(4);
         return newDrone;
     }
 
@@ -63,10 +64,6 @@ public class MyQueue implements QueueADT{
     public void clear(){
         nextStep.clear();
     }
-
-
-    
-
 }
 
 
