@@ -101,7 +101,7 @@ public class Maze {
         return end;
     }
 
-    //TO DO LATER
+    
     public void reset(){
         if (this.maze != null)
         { 
