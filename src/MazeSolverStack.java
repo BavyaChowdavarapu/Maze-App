@@ -1,11 +1,13 @@
 public class MazeSolverStack extends MazeSolver {
 
     private Maze myMaze;
-    private MyStack workList;
+    private MyStack workList = new MyStack();
+    
 
     public MazeSolverStack(Maze maze){
         super(maze);
         myMaze = maze;
+        workList.push(myMaze.getStart());
     }
     
     public MyStack getWorkList(){
@@ -13,8 +15,8 @@ public class MazeSolverStack extends MazeSolver {
     }
 
     public void makeEmpty(){
-        workList = new MyStack();
-        workList.push(myMaze.getStart());
+        //workList = new MyStack();
+        
     }
 
     public boolean isEmpty(){

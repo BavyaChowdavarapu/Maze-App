@@ -102,7 +102,7 @@ public abstract class MazeSolver {
         //current.setType(Square.START); // Mark the starting square
     }
 
-    
+    /* 
     void solve(){
         Square temp = new Square (0,0,2);
         while (!isEmpty() || temp.getType() == 3){
@@ -110,5 +110,35 @@ public abstract class MazeSolver {
             path = path+"["+temp.getRow()+","+temp.getCol()+"]";
         }
     }
+ */
+    public void solve(){
+        makeEmpty(); // Initialize the worklist/stack/queue
+        add(myMaze.getStart()); // Add the starting point to the worklist/stack/queue
+    
+        Square current;
+        while (!isEmpty()) {
+            current = step();
+            if (current == null) {
+                // If step() returns null, there are no more squares to explore, and the maze is unsolvable.
+                break;
+            }
+            if (current.getType() == 3) {
+                // If we've reached the end, construct the path string from the end to the start.
+                constructPath(current);
+                break;
+            }
+        }
+    }
+    
+    private void constructPath(Square end){
+        path = ""; // Reset the path
+        Square current = end;
+        while (current.previous != null) {
+            path = "[" + current.getRow() + "," + current.getCol() + "] " + path;
+            current = current.previous; // Move to the previous square
+        }
+        path = "[" + current.getRow() + "," + current.getCol() + "] " + path; // Add the start square
+    }
+    
     
 }

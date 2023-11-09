@@ -8,6 +8,7 @@ public class MazeSolverQueue extends MazeSolver{
     public MazeSolverQueue(Maze myMaze){
         super(myMaze);
         this.myMaze = myMaze;
+        worklist.enqueue(myMaze.getStart()); //worklist starts with the starting point
     }
     
     
@@ -16,7 +17,7 @@ public class MazeSolverQueue extends MazeSolver{
         while (worklist.size() != 0){
             worklist.dequeue();
         }
-        worklist.enqueue(myMaze.getStart()); //worklist starts with the starting point 
+         
     }
 
 

@@ -63,6 +63,32 @@ public static void main(String[] args) {
     System.out.println(thing.front().getType());
     thing.clear();
     System.out.println(thing.isEmpty());
+
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+
+    MazeSolver stacky = new MazeSolverStack(newMaze);
+    System.out.println(newMaze);
+    stacky.step();
+    System.out.println("----------------------------------");
+    System.out.println(newMaze);
+    stacky.step();
+    System.out.println("----------------------------------");
+    System.out.println(newMaze);
+    stacky.step();
+    System.out.println("----------------------------------");
+    System.out.println(newMaze);
+    stacky.step();
+    System.out.println("----------------------------------");
+    System.out.println(newMaze);
+    stacky.step();
+    System.out.println("----------------------------------");
+    System.out.println(newMaze);
+
 }
 
 
