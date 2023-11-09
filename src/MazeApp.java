@@ -226,27 +226,28 @@ public class MazeApp extends JFrame implements ActionListener {
         } catch (NumberFormatException nfe) {
             // do nothing
         }
+
         if (newValue>0)
             fontSize = newValue;
-        fontField.setText(Integer.toString(fontSize));
-        mazeDisplay.setFont(new Font("Courier",Font.BOLD, fontSize));
-        pathDisplay.setFont(new Font("Courier",Font.BOLD, fontSize));
-            }
+            fontField.setText(Integer.toString(fontSize));
+            mazeDisplay.setFont(new Font("Courier",Font.BOLD, fontSize));
+            pathDisplay.setFont(new Font("Courier",Font.BOLD, fontSize));
+        }
             /**
              * Allow the user to quit via button.
             */
-            private void doQuit() {
+        private void doQuit() {
             System.exit(0);
-            }
+        }
             /**
              * Set things back to the ready state.  Called by the "reset" button
             * as well as many other methods.
             */
-            private void reset() {
-        maze.reset();
-        makeNewSolver();
-        updateMaze();
-            }
+        private void reset() {
+            maze.reset();
+            makeNewSolver();
+            updateMaze();
+        }
             /**
              * Performs a single step of the MazeSolver.  Called when the
             * user clicks on "Step" as well as by the interval timer.
@@ -255,8 +256,8 @@ public class MazeApp extends JFrame implements ActionListener {
         if (mazeLoaded && !solver.isSolved()) {
             solver.step();
             if (solver.isSolved()) {
-            solveButton();
-            timer.stop();
+                solveButton();
+                timer.stop();
             }
         }
         updateMaze();
@@ -362,13 +363,14 @@ public class MazeApp extends JFrame implements ActionListener {
             /**
              * Update both the maze and the path text areas.
             */
-            private void updateMaze() {
-        if (mazeLoaded) {  // leave blank until first maze is loaded	    
-            // update the maze
-            mazeDisplay.setText(maze.toString());
-            // update the path
-            if (solver.isSolved()) {
-                pathDisplay.setText(solver.getPath());
+            private void updateMaze() {//---------------------------------------------------something isn't woring here
+                if (mazeLoaded) {  // leave blank until first maze is loaded	    
+                    // update the maze
+                    mazeDisplay.setText(maze.toString());
+                    // update the path
+                    
+                    if (solver.isSolved()) {
+                    pathDisplay.setText(solver.getPath());
             } else {
                 pathDisplay.setText("Maze is unsolved");
             }

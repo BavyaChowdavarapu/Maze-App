@@ -11,7 +11,7 @@ public class Maze {
 
     }
 
-    public boolean loadMaze(String fName){
+    public boolean loadMaze(String fName){ //this works 
         File newFile = new File(fName);
         try{
         Scanner file = new Scanner(newFile);

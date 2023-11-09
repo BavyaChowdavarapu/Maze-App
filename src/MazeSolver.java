@@ -57,7 +57,7 @@ public abstract class MazeSolver {
             }
         
         }  
-        return new Square(0,0,9);  
+        return null;  
     }
 
 
