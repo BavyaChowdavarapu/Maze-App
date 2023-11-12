@@ -107,9 +107,9 @@ public class Maze {
         { 
             for (Square[] row : maze){
                 for (Square sq : row){
-                    sq.marked = false;
+                    //sq.marked = false;
                     sq.previous = null;
-                    if (sq.getType() == 4){
+                    if (sq.getType() == 4 || sq.getType() == 5 || sq.getType() == 6){
                         sq.setType(0);
                     }
                 }

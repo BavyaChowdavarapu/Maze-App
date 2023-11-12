@@ -1,22 +1,21 @@
 public class MazeSolverQueue extends MazeSolver{
     //public static Maze myMaze; //instance vairable for the class
 
-    private MyQueue worklist = new MyQueue();
+    private MyQueue<Square> worklist = new MyQueue<>();
     private Maze myMaze;
 
 
     public MazeSolverQueue(Maze myMaze){
         super(myMaze);
         this.myMaze = myMaze;
+        //make the first thing in the worklist the starting point
+        worklist.enqueue(myMaze.getStart());
     }
     
     
     
     public void makeEmpty(){
-        while (worklist.size() != 0){
-            worklist.dequeue();
-        }
-        worklist.enqueue(myMaze.getStart()); //worklist starts with the starting point 
+        this.worklist.clear();
     }
 
 

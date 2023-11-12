@@ -3,8 +3,8 @@ import java.util.*;
 
 public abstract class MazeSolver {
     private Maze myMaze;
-
-    private String path = "";
+    private MyQueue<Square> worklist;
+    //private String path = "";
 
     abstract void makeEmpty();
 
@@ -16,10 +16,12 @@ public abstract class MazeSolver {
 
     MazeSolver(Maze maze){
         myMaze = maze;
+        worklist = new MyQueue<>();
+        worklist.enqueue(myMaze.getStart());
     }
 
     boolean isSolved(){
-        if (isEmpty() || next().getType() == 3){
+        if (this.isEmpty() || myMaze.getFinish().getPrevious() != null /*|| next().getType() == 3*/){
             return true;
         }
         else {
@@ -29,44 +31,61 @@ public abstract class MazeSolver {
     }
 
     String getPath(){
+        String path = "";
+
+        if (!this.isSolved() || (myMaze.getFinish().getPrevious() == null && this.isEmpty())){
+            return "not solveable";
+        }
+
+        Stack<String> backtrack = new Stack<>();
+        Square curr = maze.getFinish();
+
+        while (!curr.equals(myMaze.getStart())){
+            if (curr.getType() != 3){
+                curr.setType(6); //sets completed path to x's at the end
+            }
+            backtrack.push(", [" + curr.getRow() + ", " + curr.getCol() + "]");
+            curr = curr.getPrevious();
+        }
+
+        path = path + "[" + curr.getRow() + ", " + curr.getCol() + "]";
+        while (!backtrack.isEmpty()){
+            path = path + backtrack.pop();
+        }
+
         return path;
     }
 
     Square step(){
-        if (!isEmpty()){
-            Square explore = next();
-            if (explore.getType() == 3){
-                System.out.println(getPath());
-                return explore;
-            }
-            else{
-                ArrayList<Square> neighbors = myMaze.getNeighbors(explore);
-                for (Square n : neighbors){
-                    if (n.marked == false && n.getType() != 1){
-                        add(n);
-                        n.previous = explore;
-                        n.marked = true;
-                        
-                       
-                    }
+        if (!worklist.isEmpty()){
+            
+            ArrayList neighbors = myMaze.getNeighbors(explore);
+            for (Square n : neighbors){
+                if (n.getType() == 3){
+                    n.setPrevious(explore);
+                    System.out.println(this.getPath());
+                    return explore;
                 }
-                if (explore.previous != null)
-                    explore.previous.setType(0);
-                explore.setType(4);
+                else if (n.getType() == 0){//if unexplored wall
+                    n.setPrevious(explore); //previous is current now
+                    n.setType(4);// current is now drone
+                    worklist.add(n); //current is now in worklist
+                }
+
+                explore.setType(5);
                 return explore;
             }
         
         }  
-        return null;  
+        return null;  //if worklist is empty
     }
 
 
     
     void solve(){
-        Square temp = new Square (0,0,2);
-        while (!isEmpty() || temp.getType() == 3){
-            temp = step();
-            path = path+"["+temp.getRow()+","+temp.getCol()+"]";
+        //while worklist isn't empty and it isn't solved 
+        while (!isEmpty() || !this.isSolved()){
+            step();
         }
     }
     

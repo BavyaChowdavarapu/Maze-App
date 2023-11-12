@@ -3,15 +3,31 @@ import java.util.*;
 
 public class MyQueue implements QueueADT{
     private LinkedList<Square> nextStep = new LinkedList<>();
+    private Node start;
+    private Node end;
     
-    
+
+    public MyQueue(){
+        start = null;
+        end = null;
+    }
 
     /**
      * Add an item to the queue
      * @param item the data item to add (of type T)
      */
     public void enqueue(Object item){
-        nextStep.add((Square)item);
+       Node myNode = new Node (item);
+
+       if (start == null){
+        start = myNode;
+        end = myNode;
+        return;
+       }
+
+       //if the start is not null
+       end.next = myNode;
+       end = myNode;
     }
 
     /**
@@ -20,10 +36,17 @@ public class MyQueue implements QueueADT{
      * @throws NoSuchElementException if the queue is empty
      */
     public Square dequeue() throws NoSuchElementException{
-        Square newDrone = nextStep.removeFirst();
-        //newDrone.drone = true;
-        newDrone.setType(4);
+        if (start == null){
+            throw new NoSuchElementException();
+        }
+        Square newDrone = start.data;
+        start = start.next();
         return newDrone;
+        
+        //Square newDrone = nextStep.removeFirst();
+        //newDrone.drone = true;
+        //newDrone.setType(4);
+        //return newDrone;
     }
 
     /**
@@ -32,7 +55,10 @@ public class MyQueue implements QueueADT{
      * @throws NoSuchElementException if the queue is empty
      */
     public Square front() throws NoSuchElementException{
-        return nextStep.getFirst();
+        if (start == null){
+            throw new NoSuchElementException();
+        }
+        return start.data;
     }
 
     /**
@@ -40,7 +66,14 @@ public class MyQueue implements QueueADT{
      * @return the number of items in the queue
      */
     public int size(){
-        return nextStep.size();
+        int s = 0;
+        Node thisNode = start;
+        while (thisNode != null){
+            s++;
+            thisNode = thisNode.next;
+        }
+
+        return s;
     }
 
     /**
@@ -48,7 +81,7 @@ public class MyQueue implements QueueADT{
      * @return true if the size is 0, false otherwise
      */
     public boolean isEmpty(){
-        if (nextStep.size() == 0){
+        if (start == null){
             return true;
         }
         else {
@@ -62,7 +95,18 @@ public class MyQueue implements QueueADT{
      * Clear out the data structure
      */
     public void clear(){
-        nextStep.clear();
+        start = null;
+        end = null;
+    }
+
+    private class Node{
+        public Square data;
+        public Node next;
+
+        public Node(Square n){
+            this.data = n;
+            this.next = null;
+        }
     }
 }
 

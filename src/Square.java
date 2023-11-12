@@ -2,8 +2,8 @@ public class Square {
 
     private int row, col, type;
     private boolean valid = true;
-    public Square previous;
-    public boolean marked;
+    private Square previous;
+    //public boolean marked;
     //public boolean drone = false;
 
     public Square(int row, int col, int type){
@@ -11,7 +11,7 @@ public class Square {
         this.col = col;
         this.type = type;
         this.previous  = null;
-        marked =false;
+        //marked =false;
 
 
         if (type != 0 && type != 1 && type != 2 && type!=3){
@@ -21,10 +21,10 @@ public class Square {
     }
     
     public int getRow(){
-        return row;
+        return this.row;
     }
     public int getCol(){
-        return col;
+        return this.col;
     }
     public int getType(){
         if (valid)
@@ -38,11 +38,16 @@ public class Square {
         this.type = n;
     }
 
+    public void setPrevious(Square x) {
+        this.previous = x;
+    }
+
+    public Square getPrevious(){
+        return this.previous;
+    }
 
     public String toString(){
-        if (marked){//explored squares 
-            return ". ";
-        }
+        
         if (type == 0){
             return "_ ";
         }
@@ -59,13 +64,15 @@ public class Square {
             //drone = true;
             return "o ";
         }
+        else if (type == 5){
+            return ". ";
+        }
+        else if (type == 6){
+            return "x "
+        }
         
-        
+        //if none of above
         return "invalid parameter";
     }
-
-
-
-
-
+    
 }

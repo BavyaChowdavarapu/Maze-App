@@ -2,15 +2,21 @@ import java.util.NoSuchElementException;
 import java.util.*;
 
 public class MyStack implements StackADT {
-    ArrayList<Square> nextStep = new ArrayList<>();
+    private ArrayList<Square> nextStep;
+    int size;
 
    
+    public MyStack(){
+        this.nextStep = new ArrayList<>();
+        size = 0;
+    }
     /**
     * Add an item onto the stack
     * @param item the data item to add (of type T)
     */
     public void push(Object item){
         Square itemm = (Square) item;
+        size++;
         nextStep.add(itemm);
     }
     
@@ -20,8 +26,13 @@ public class MyStack implements StackADT {
     * @throws NoSuchElementException if the stack is empty
      */
     public Square pop() throws NoSuchElementException{
-        Square thisStep = nextStep.remove(nextStep.size() -1);
-        return thisStep;
+        if (this.isEmpty()){
+            throw new NoSuchElementException();
+        }
+
+        Square returnThis = nextStep.remove(size() - 1);
+        size--;
+        return returnThis;
     }
     
     /**
@@ -30,6 +41,9 @@ public class MyStack implements StackADT {
      * @throws NoSuchElementException if the stack is empty
      */
     public Square top() throws NoSuchElementException{
+        if (this.isEmpty()){
+            throw new NoSuchElementException();
+        }
         Square thisStep = nextStep.get(nextStep.size() - 1);
         return thisStep;
     }
@@ -62,10 +76,18 @@ public class MyStack implements StackADT {
      * Clear out the data structure
      */
     public void clear(){
-        while (nextStep.size() != 0){
-            nextStep.remove(nextStep.size() - 1);
-        }
+        nextStep = new ArrayList<>();
     }
 
+    public String toString(){
+        String steps = "[";
+
+        for (Square x : this.nextStep) {
+            steps += x + " ";
+        }
+        steps += " ";
+
+        return steps;
+    }
 }
      

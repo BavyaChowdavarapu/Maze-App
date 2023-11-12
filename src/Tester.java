@@ -3,7 +3,7 @@ class Tester{
 
 public static void main(String[] args) {
     //SQUARE CLASS UNIT TESTS
-    Square t1 = new Square(1,1,9);
+    Square t1 = new Square(1,1,9); 
     Square t2 = new Square(1,1,0);
     Square t3 = new Square(1,1,1);
     Square t4= new Square(1,1,2);
