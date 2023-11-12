@@ -17,7 +17,6 @@ public class MazeSolverQueue extends MazeSolver{
     
     public void makeEmpty(){
         worklist = new MyQueue();
-        //add(myMaze.getStart());
          
     }
 
