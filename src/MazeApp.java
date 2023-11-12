@@ -64,12 +64,15 @@ public class MazeApp extends JFrame implements ActionListener {
         JPanel filenamePanel = new JPanel(new BorderLayout());
         filenamePanel.add(new JLabel("File: "), "West");
         filenamePanel.add(filename, "Center");	
+
         JPanel fontPanel = new JPanel(new BorderLayout());
         fontPanel.add(new JLabel("Font size:"), "West");
         fontPanel.add(fontField, "Center");	
+
         JPanel timerPanel = new JPanel(new BorderLayout());
         timerPanel.add(new JLabel("Timer (ms):"), "West");
         timerPanel.add(timerField, "Center");	
+
         JPanel controls = new JPanel(new FlowLayout());
         controls.add(timerPanel);
         controls.add(fontPanel);
@@ -145,6 +148,7 @@ public class MazeApp extends JFrame implements ActionListener {
         stepButton.addActionListener(this);
         resetButton.addActionListener(this);
         quitButton.addActionListener(this);	
+        
         timerField.addActionListener(this);
         fontField.addActionListener(this);
 
