@@ -40,15 +40,15 @@ public class MazeSolverStack extends MazeSolver {
         }
     }
     
+    public Square nextPeek(){
+        return workList.top();
+    }
+
+
     public Square next(){
         Square mySquare = workList.pop();
 
-        /*
-        if (mySquare.previous != null){ 
-            mySquare.previous.setType(0);
-        }
-        mySquare.setType(4);
-        */
+        
         return mySquare;
     }
 }

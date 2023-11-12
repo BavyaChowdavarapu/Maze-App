@@ -32,7 +32,7 @@ public class MyQueue implements QueueADT{
      * @throws NoSuchElementException if the queue is empty
      */
     public Square front() throws NoSuchElementException{
-        return nextStep.getFirst();
+        return nextStep.getLast();
     }
 
     /**

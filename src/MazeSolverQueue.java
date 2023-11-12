@@ -42,6 +42,12 @@ public class MazeSolverQueue extends MazeSolver{
         }
     }
 
+    public Square nextPeek(){
+        return worklist.front();
+    }
+
+
+
     public Square next(){
         Square mySquare = worklist.dequeue(); //gets the next step 
         

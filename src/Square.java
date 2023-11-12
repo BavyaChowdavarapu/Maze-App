@@ -43,6 +43,12 @@ public class Square {
         if (marked){//explored squares 
             return ". ";
         }
+        if (inFinalPath){
+            return "x ";
+        }
+        if(inWorkList){
+            return "o ";
+        }
         if (type == 0){
             return "_ ";
         }
@@ -55,10 +61,7 @@ public class Square {
         else if (type == 3){
             return "E ";
         }
-        else if (type == 4){
-            //drone = true;
-            return "o ";
-        }
+        
         
         
         return "invalid parameter";
