@@ -38,7 +38,7 @@ public class MazeSolverQueue extends MazeSolver{
             if(worklist.nextStep.get(n).equals(sq))
                 found = true;
         }
-        if(!found && !sq.marked){
+        if(!found && !sq.marked){ //Check to make sure it isn't in the worklist and hasn't been previously explored
             worklist.enqueue(sq);
         }
     }
@@ -46,13 +46,6 @@ public class MazeSolverQueue extends MazeSolver{
     public Square next(){
         Square mySquare = worklist.dequeue(); //gets the next step 
         
-
-        /*
-        if (mySquare.previous != null){ 
-            mySquare.previous.setType(0);
-        }
-        mySquare.setType(4);
-        */
         return mySquare;
     }
 

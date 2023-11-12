@@ -28,10 +28,11 @@ public abstract class MazeSolver {
     }
 
     public String getPath(){
+        // If the worklist isn't empty and the next square is the end
         if (!isEmpty() && nextEnd){
             Square end = myMaze.getFinish();
             String endPath = "[" +end.getRow() + "," + end.getCol() + "]";
-            while (end.previous != null){
+            while (end.previous != null){ //Iterates backwards from the end to the start by using the public previous variable
                 end = end.previous;
                 end.inFinalPath = true;
                 endPath = endPath + "[" +end.getRow() + "," + end.getCol() + "]";
@@ -46,7 +47,7 @@ public abstract class MazeSolver {
 
     
     Square step(){
-        if (isEmpty()){
+        if (isEmpty()){ //If the worklist is empty, the maze is done/solved
             done = true;
             return null;
             }
@@ -54,7 +55,7 @@ public abstract class MazeSolver {
         else{
             Square explore = next();
 
-            if (explore.getType() == 3){
+            if (explore.getType() == 3){ //If the next square is the end, then the maze is done, and the next square is the ending square
                 nextEnd = true;
                 done = true;
                 return explore;
@@ -65,16 +66,16 @@ public abstract class MazeSolver {
                     for (Square n : neighbors){
                         if (n.getType() == 0 || n.getType() == 3){
                             add(n);
-                            if (!n.inWorkList){
+                            if (!n.inWorkList){ //if the square isn't in the worklist, then set the previous to explore from the worklist
                                 n.previous = explore;
                                 
                             }
-                            n.inWorkList = true;
+                            n.inWorkList = true; //then add that its in the worklist
                             
                         
                         }
                     }
-                    explore.marked = true;
+                    explore.marked = true; //then add that its been explored/marked
                     
                     
                 }
@@ -86,85 +87,12 @@ public abstract class MazeSolver {
     }  
         
     
-
-
-
-    /* 
-     Square step(){
-        if (isEmpty()){
-            // If the worklist is empty, there's nothing to explore, and the maze is unsolvable.
-            return null;  
-        }
-        
-        Square current = next(); // Get the next square to explore
-        
-        if (current.getType() == 3){ // Check if it's the end
-            // Trace back the path from end to start, marking it along the way
-            markPath(current);
-            return current;
-        }
-    
-        current.marked = true; // Mark the current square as visited
-    
-        ArrayList<Square> neighbors = myMaze.getNeighbors(current); // Get neighbors
-        for (Square neighbor : neighbors){
-            // If the neighbor has not been visited and is not a wall, add it to the worklist
-            if (!neighbor.marked && neighbor.getType() != 1){
-                add(neighbor);
-                neighbor.previous = current; // Set the previous to track the path
-            }
-        }
-        
-        return current;
-    }
-    
-    private void markPath(Square end){
-        Square current = end;
-        while (current.previous != null) {
-            //current.setType(Square.PATH); // Set the square as part of the path
-            current.marked = true;
-            current = current.previous; // Move to the previous square
-        }
-        //current.setType(Square.START); // Mark the starting square
-    }
-    */
     
     void solve(){
-        while(!done){
+        while(!done){ //While the maze hasn't been solved, keep stepping through it
             step();
         }
     }
- /* 
-    public void solve(){
-        makeEmpty(); // Initialize the worklist/stack/queue
-        add(myMaze.getStart()); // Add the starting point to the worklist/stack/queue
-    
-        Square current;
-        while (!isEmpty()) {
-            current = step();
-            System.out.println(myMaze);
-            System.out.println("---------------");
-            if (current == null) {
-                // If step() returns null, there are no more squares to explore, and the maze is unsolvable.
-                break;
-            }
-            if (current.getType() == 3) {
-                // If we've reached the end, construct the path string from the end to the start.
-                constructPath(current);
-                break;
-            }
-        }
-    }
-    
-    private void constructPath(Square end){
-        path = ""; // Reset the path
-        Square current = end;
-        while (current.previous != null) {
-            path = "[" + current.getRow() + "," + current.getCol() + "] " + path;
-            current = current.previous; // Move to the previous square
-        }
-        path = "[" + current.getRow() + "," + current.getCol() + "] " + path; // Add the start square
-    }
-    */
+ 
     
 }

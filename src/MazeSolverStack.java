@@ -35,7 +35,7 @@ public class MazeSolverStack extends MazeSolver {
             if(workList.nextStep.get(n).equals(sq))
                 found = true;
         }
-        if(!found && !sq.marked){
+        if(!found && !sq.marked){ // Once again, check to make sure it isn't in the worklist currently, and hasn't been already previously explored
             workList.push(sq);
         }
     }
