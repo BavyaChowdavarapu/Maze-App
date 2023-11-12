@@ -68,7 +68,7 @@ public class Square {
             return ". ";
         }
         else if (type == 6){
-            return "x "
+            return "x ";
         }
         
         //if none of above

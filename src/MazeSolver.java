@@ -59,6 +59,7 @@ public abstract class MazeSolver {
     Square step(){
         if (!worklist.isEmpty()){
             
+            
             ArrayList neighbors = myMaze.getNeighbors(explore);
             for (Square n : neighbors){
                 if (n.getType() == 3){

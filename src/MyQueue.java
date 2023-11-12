@@ -17,7 +17,7 @@ public class MyQueue implements QueueADT{
      * @param item the data item to add (of type T)
      */
     public void enqueue(Object item){
-       Node myNode = new Node (item);
+       Node myNode = new Node ((Square) item);
 
        if (start == null){
         start = myNode;
