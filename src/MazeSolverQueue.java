@@ -5,12 +5,12 @@ public class MazeSolverQueue extends MazeSolver{
     private Maze myMaze;
 
 
-    public MazeSolverQueue(Maze myMaze){
-        super(myMaze);
+    public MazeSolverQueue(Maze maze){
+        super(maze);
 
         makeEmpty();
-        this.myMaze = myMaze;
-        worklist.enqueue(myMaze.getStart()); //worklist starts with the starting point
+        this.myMaze = maze;
+        //worklist.enqueue(myMaze.getStart()); //worklist starts with the starting point
     }
     
     
