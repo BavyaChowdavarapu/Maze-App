@@ -1,8 +1,10 @@
+
 public class Square {
 
     private int row, col, type;
     private boolean valid = true;
     private Square previous;
+    public int startingType;
     //public boolean marked;
     //public boolean drone = false;
 
@@ -10,6 +12,7 @@ public class Square {
         this.row = row;
         this.col = col;
         this.type = type;
+        startingType = type;
         this.previous  = null;
         //marked =false;
 

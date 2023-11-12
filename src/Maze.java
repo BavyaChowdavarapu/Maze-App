@@ -1,3 +1,4 @@
+
 import java.util.*;
 import java.io.*;
 
@@ -108,13 +109,19 @@ public class Maze {
             for (Square[] row : maze){
                 for (Square sq : row){
                     //sq.marked = false;
-                    sq.previous = null;
+                    sq.setPrevious(null);
                     if (sq.getType() == 4 || sq.getType() == 5 || sq.getType() == 6){
                         sq.setType(0);
                     }
+                    if (sq.startingType == 2){
+                        sq.setType(2);
+                    }
+                    if (sq.startingType == 3){
+                        sq.setType(3);
+                    }
                 }
             }
-    }
+        }
         
     }
 

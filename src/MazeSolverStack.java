@@ -1,12 +1,18 @@
+import java.util.*;
+
 public class MazeSolverStack extends MazeSolver {
 
     private Maze myMaze;
-    private MyStack<Square> workList = new MyStack<>();
+    private MyStack workList = new MyStack();
 
+    public void add(Square sq){
+        workList.push(sq);
+    }
+    
     public MazeSolverStack(Maze maze){
         super(maze);
         myMaze = maze;
-        worklist.push(myMaze.getStart());
+        add(myMaze.getStart());
     }
     
     public MyStack getWorkList(){
@@ -14,24 +20,41 @@ public class MazeSolverStack extends MazeSolver {
     }
 
     public void makeEmpty(){
-        workList = new MyStack<>();
+        workList = new MyStack();
     }
 
     public boolean isEmpty(){
-        if (workList != null){
-            return false;
-        }
+        //if (workList != null){
+            //return false;
+        //}
         //if worklist is null
-        return true;
+        return worklist.isEmpty();
+        //return true;
     }
 
-    public void add(Square sq){
-        workList.push(sq);
-    }
-    
     public Square next(){
         Square mySquare = workList.pop();
 
+        //adds the neighbors of mySquare to the worklist 
+        ArrayList<Square> mySqNeighbors = myMaze.getNeighbors(mySquare);
+
+        for (Square sq : mySqNeighbors){//just changed this 
+            //if one of the neighbor options is the end point 
+            if (sq.getType() == 3){
+              //empty the worklist 
+              sq.setPrevious(mySquare);
+              System.out.println(getPath());
+              step();
+              makeEmpty();
+              return sq;
+            }
+            
+            //if the neighbor is not the end point but is an empty spot
+            else if (sq.getType() == 0 ){
+                add(sq);
+            }
+        }
+        
         /*
         if (mySquare.previous != null){ 
             mySquare.previous.setType(0);

@@ -1,3 +1,4 @@
+
 import java.util.NoSuchElementException;
 import java.util.*;
 
@@ -53,10 +54,7 @@ public class MyStack implements StackADT {
      * @return the number of items in the stack
      */
     public int size(){
-        
-        int num = nextStep.size();
-        return num;
-
+        return size;
     }
 
     /**
@@ -65,7 +63,7 @@ public class MyStack implements StackADT {
      */
     public boolean isEmpty(){
         
-        if (nextStep.size() == 0){
+        if (size == 0){
             return true;
         }
         else 

@@ -1,3 +1,4 @@
+
 import java.util.NoSuchElementException;
 import java.util.*;
 
@@ -40,7 +41,7 @@ public class MyQueue implements QueueADT{
             throw new NoSuchElementException();
         }
         Square newDrone = start.data;
-        start = start.next();
+        start = start.next;
         return newDrone;
         
         //Square newDrone = nextStep.removeFirst();

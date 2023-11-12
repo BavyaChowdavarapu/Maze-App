@@ -1,7 +1,9 @@
-public class MazeSolverQueue extends MazeSolver{
-    //public static Maze myMaze; //instance vairable for the class
+import java.util.*;
 
-    private MyQueue<Square> worklist = new MyQueue<>();
+public class MazeSolverQueue extends MazeSolver{
+    //public static Maze myMaze; //instance variable for the class
+
+    private MyQueue worklist = new MyQueue();
     private Maze myMaze;
 
 
@@ -35,13 +37,32 @@ public class MazeSolverQueue extends MazeSolver{
     public Square next(){
         Square mySquare = worklist.dequeue(); //gets the next step 
         
+        //adds the neighbors of mySquare to the worklist 
+        ArrayList<Square> mySqNeighbors = myMaze.getNeighbors(mySquare);
 
+        for (Square sq : mySqNeighbors){//just changed this 
+            //if the neighbor is the end point 
+            if (sq.getType() == 3){
+              //empty the worklist 
+              step();
+              makeEmpty();
+              sq.setPrevious(mySquare);
+              System.out.println(getPath());
+              return sq;
+            }
+            
+            //if the neighbor is not an end point but is an empty spot
+            else if (sq.getType() == 0 ){
+                add(sq);
+            }
+        }
         /*
         if (mySquare.previous != null){ 
             mySquare.previous.setType(0);
         }
         mySquare.setType(4);
         */
+       
         return mySquare;
     }
 
