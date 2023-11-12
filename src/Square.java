@@ -5,6 +5,7 @@ public class Square {
     public Square previous;
     public boolean marked, inFinalPath = false, inWorkList = false;
     //public boolean drone = false;
+    public startingType;
 
     public Square(int row, int col, int type){
         this.row = row;
@@ -12,6 +13,7 @@ public class Square {
         this.type = type;
         this.previous  = null;
         marked =false;
+        startingType = type;
 
 
         if (type != 0 && type != 1 && type != 2 && type!=3){
