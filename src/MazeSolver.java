@@ -30,7 +30,7 @@ public abstract class MazeSolver {
     public String getPath(){
         String path = "";
 
-        if (!this.isSolved() || (myMaze.getFinish().getPrevious() == null && this.isEmpty())){
+        if (!this.isSolved() || (myMaze.getFinish().previous == null && this.isEmpty())){
             return "not solved";
         }
 
@@ -39,10 +39,10 @@ public abstract class MazeSolver {
 
         while (!curr.equals(myMaze.getStart())){
             if (curr.startingType != 3){
-                curr.setType(6); //sets completed path to x's at the end
+                curr.inFinalPath = true;
             }
             backtrack.push(", [" + curr.getRow() + ", " + curr.getCol() + "]");
-            curr = curr.getPrevious();
+            curr = curr.previous;
         }
 
         path = path + "[" + curr.getRow() + ", " + curr.getCol() + "]";
@@ -56,19 +56,8 @@ public abstract class MazeSolver {
 
     
     Square step(){
-        /* 
-        if (!isEmpty() && nextPeek() == myMaze.getFinish()){ 
-                nextEnd = true;
-                Square ending = myMaze.getFinish();
-               
-                while (ending.previous != null){ //X's for the final path are only showing if you switch from "Queue" to "Stack"
-                                                 // or vice versa, as it's not updating the board until you switch methods.
-                    ending = ending.previous;
-                    ending.setType(6);
-                    
-                }
-            }
-        */
+        
+        
         if (isEmpty()){
             done = true;
             return null;
