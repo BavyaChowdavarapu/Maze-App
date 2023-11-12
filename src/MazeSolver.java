@@ -28,19 +28,29 @@ public abstract class MazeSolver {
     }
 
     public String getPath(){
-        if (!isEmpty() && nextEnd){
-            Square end = myMaze.getFinish();
-            String endPath = "[" +end.getRow() + "," + end.getCol() + "]";
-            while (end.previous != null){
-                end = end.previous;
-                end.inFinalPath = true;
-                endPath = endPath + "[" +end.getRow() + "," + end.getCol() + "]";
+        String path = "";
+
+        if (!this.isSolved() || (myMaze.getFinish().getPrevious() == null && this.isEmpty())){
+            return "not solved";
+        }
+
+        Stack<String> backtrack = new Stack<>();
+        Square curr = myMaze.getFinish(); //check why end is being set to null
+
+        while (!curr.equals(myMaze.getStart())){
+            if (curr.startingType != 3){
+                curr.setType(6); //sets completed path to x's at the end
             }
-            return endPath;
+            backtrack.push(", [" + curr.getRow() + ", " + curr.getCol() + "]");
+            curr = curr.getPrevious();
         }
-        else{
-            return "Can't get the path just yet";
+
+        path = path + "[" + curr.getRow() + ", " + curr.getCol() + "]";
+        while (!backtrack.isEmpty()){
+            path = path + backtrack.pop();
         }
+
+        return path;
        
     }
 
