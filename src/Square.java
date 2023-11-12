@@ -3,7 +3,7 @@ public class Square {
     private int row, col, type;
     private boolean valid = true;
     public Square previous;
-    public boolean marked;
+    public boolean marked, inFinalPath = false, inWorkList = false;
     //public boolean drone = false;
 
     public Square(int row, int col, int type){

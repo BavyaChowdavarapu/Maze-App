@@ -14,56 +14,82 @@ public abstract class MazeSolver {
 
     abstract Square next();
 
+    public boolean nextEnd = false;
+    public boolean done = false;
+    
+
     MazeSolver(Maze maze){
         myMaze = maze;
     }
 
     boolean isSolved(){
-        if (isEmpty() || next().getType() == 3){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return done;
             
     }
 
-    String getPath(){
-        return path;
+    public String getPath(){
+        if (!isEmpty() && nextEnd){
+            Square end = myMaze.getFinish();
+            String endPath = "[" +end.getRow() + "," + end.getCol() + "]";
+            while (end.previous != null){
+                end = end.previous;
+                end.inFinalPath = true;
+                endPath = endPath + "[" +end.getRow() + "," + end.getCol() + "]";
+            }
+            return endPath;
+        }
+        else{
+            return "Can't get the path just yet";
+        }
+       
     }
+
+    
+    Square step(){
+        if (isEmpty()){
+            done = true;
+            return null;
+            }
+
+        else{
+            Square explore = next();
+
+            if (explore.getType() == 3){
+                nextEnd = true;
+                done = true;
+                return explore;
+            }
+                else{
+                    
+                    ArrayList<Square> neighbors = myMaze.getNeighbors(explore);
+                    for (Square n : neighbors){
+                        if (n.getType() == 0 || n.getType() == 3){
+                            add(n);
+                            if (!n.inWorkList){
+                                n.previous = explore;
+                                
+                            }
+                            n.inWorkList = true;
+                            
+                        
+                        }
+                    }
+                    explore.marked = true;
+                    
+                    
+                }
+
+            return explore;
+        }
+           
+            
+    }  
+        
+    
+
+
 
     /* 
-    Square step(){
-        if (!isEmpty()){
-            Square explore = next();
-            if (explore.getType() == 3){
-                System.out.println(getPath());
-                return explore;
-            }
-            else{
-                ArrayList<Square> neighbors = myMaze.getNeighbors(explore);
-                for (Square n : neighbors){
-                    if (n.marked == false && n.getType() != 1){
-                        add(n);
-                        n.previous = explore;
-                        n.marked = true;
-                        
-                       
-                    }
-                }
-                if (explore.previous != null)
-                    explore.previous.setType(0);
-                explore.setType(4);
-                return explore;
-            }
-        
-        }  
-        return new Square(0,0,9);  
-    }
-*/
-
-
-
      Square step(){
         if (isEmpty()){
             // If the worklist is empty, there's nothing to explore, and the maze is unsolvable.
@@ -101,16 +127,14 @@ public abstract class MazeSolver {
         }
         //current.setType(Square.START); // Mark the starting square
     }
-
-    /* 
+    */
+    
     void solve(){
-        Square temp = new Square (0,0,2);
-        while (!isEmpty() || temp.getType() == 3){
-            temp = step();
-            path = path+"["+temp.getRow()+","+temp.getCol()+"]";
+        while(!done){
+            step();
         }
     }
- */
+ /* 
     public void solve(){
         makeEmpty(); // Initialize the worklist/stack/queue
         add(myMaze.getStart()); // Add the starting point to the worklist/stack/queue
@@ -118,6 +142,8 @@ public abstract class MazeSolver {
         Square current;
         while (!isEmpty()) {
             current = step();
+            System.out.println(myMaze);
+            System.out.println("---------------");
             if (current == null) {
                 // If step() returns null, there are no more squares to explore, and the maze is unsolvable.
                 break;
@@ -139,6 +165,6 @@ public abstract class MazeSolver {
         }
         path = "[" + current.getRow() + "," + current.getCol() + "] " + path; // Add the start square
     }
-    
+    */
     
 }

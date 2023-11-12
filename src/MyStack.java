@@ -2,7 +2,7 @@ import java.util.NoSuchElementException;
 import java.util.*;
 
 public class MyStack implements StackADT {
-    ArrayList<Square> nextStep = new ArrayList<>();
+    public ArrayList<Square> nextStep = new ArrayList<>();
 
    
     /**

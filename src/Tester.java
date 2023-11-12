@@ -88,7 +88,7 @@ public static void main(String[] args) {
     stacky.step();
     System.out.println("----------------------------------");
     System.out.println(newMaze);
-
+    stacky.solve();
 }
 
 

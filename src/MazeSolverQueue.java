@@ -7,6 +7,8 @@ public class MazeSolverQueue extends MazeSolver{
 
     public MazeSolverQueue(Maze myMaze){
         super(myMaze);
+
+        makeEmpty();
         this.myMaze = myMaze;
         worklist.enqueue(myMaze.getStart()); //worklist starts with the starting point
     }
@@ -14,9 +16,8 @@ public class MazeSolverQueue extends MazeSolver{
     
     
     public void makeEmpty(){
-        while (worklist.size() != 0){
-            worklist.dequeue();
-        }
+        worklist = new MyQueue();
+        add(myMaze.getStart());
          
     }
 
@@ -31,7 +32,15 @@ public class MazeSolverQueue extends MazeSolver{
     }
 
     public void add(Square sq){
-        worklist.enqueue(sq);
+
+        boolean found = false;
+        for (int n = 0; n<worklist.size();n++){
+            if(worklist.nextStep.get(n).equals(sq))
+                found = true;
+        }
+        if(!found && !sq.marked){
+            worklist.enqueue(sq);
+        }
     }
 
     public Square next(){

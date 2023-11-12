@@ -6,6 +6,8 @@ public class MazeSolverStack extends MazeSolver {
 
     public MazeSolverStack(Maze maze){
         super(maze);
+
+        makeEmpty();
         myMaze = maze;
         workList.push(myMaze.getStart());
     }
@@ -15,22 +17,27 @@ public class MazeSolverStack extends MazeSolver {
     }
 
     public void makeEmpty(){
-        //workList = new MyStack();
+        workList = new MyStack();
         
     }
 
     public boolean isEmpty(){
-        if (workList != null){
-            return workList.isEmpty();
-        }
-        makeEmpty();
-        return true;
+        return workList.isEmpty();
         
 
     }
 
     public void add(Square sq){
-        workList.push(sq);
+        
+
+        boolean found = false;
+        for (int n = 0; n<workList.size();n++){
+            if(workList.nextStep.get(n).equals(sq))
+                found = true;
+        }
+        if(!found && !sq.marked){
+            workList.push(sq);
+        }
     }
     
     public Square next(){

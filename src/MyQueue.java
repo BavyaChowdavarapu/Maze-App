@@ -2,7 +2,7 @@ import java.util.NoSuchElementException;
 import java.util.*;
 
 public class MyQueue implements QueueADT{
-    private LinkedList<Square> nextStep = new LinkedList<>();
+    public LinkedList<Square> nextStep = new LinkedList<>();
     
     
 
